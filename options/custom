@@ -24,9 +24,10 @@ echo "Oki! When ISO build is ${fgMagenta}done${txReset} you can find the ISO in 
 read -p "Where would you like the ${fgCyan}build${txReset} folder to be? : " buildDir
 echo "Oki! ${fgCyan}${buildDir}${txReset} will be where the build takes place!" && sleep 1.3
 
-	profile=$archisoProfile
-	profiledef=$profile/profiledef.sh
+	profile=${archisoProfile}
+	profiledef=${profile}/profiledef.sh
 	user=$(whoami)
+	echo $profile
 
 echo
 echo "${fgCyan}Step 2${txReset}: Making sure you have latest ${fgCyan}archiso${txReset}!"
@@ -170,9 +171,9 @@ done
 echo
 echo "Updating ${fgCyan}build date aka ISO_BUILD${txReset} in dev-rel"
 dateBuild=$(date +%m-%d-%Y)
-echo "${fgCyan}This${txReset} ISO's build date is : "$dateBuild
-isoBuild=$(sed -n "s/\(^ISO_BUILD=\)//p" $profile/airootfs/etc/dev-rel)
-awk -v cISOB="$isoBuild" -v nISOB="$dateBuild" 'NR==3, NR==3 {sub(cISOB, nISOB)}1' $profile/airootfs/etc/dev-rel >> dev-rel
+echo "${fgCyan}This${txReset} ISO's build date is : " $dateBuild
+isoBuild=$(sed -n "s/\(^ISO_BUILD=\)/{dateBuild/p" $profile/airootfs/etc/dev-rel)
+awk -v cISOB="$isoBuild" -v nISOB="$dateBuild" 'NR==3, NR==3 {sub(cISOB, nISOB)}1' $profile/airootfs/etc/dev-rel > dev-rel
 mv dev-rel $profile/airootfs/etc/dev-rel
 isoBuild=$(sed -n "s/\(^ISO_BUILD=\)//p" $profile/airootfs/etc/dev-rel)
 echo "Oki. ISO_BUILD in dev-rel now reads ${fgCyan}${isoBuild}${txReset}!" && sleep 1.7
