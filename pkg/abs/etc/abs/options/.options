@@ -1,0 +1,27 @@
+#!/bin/bash
+# https://keyaedisa.github.io, https://github.com/keyaedisa 
+
+custom() {
+ source /etc/abs/options/custom
+}
+
+_help() {
+ source /etc/abs/options/help
+}
+
+vanilla() {
+ source /etc/abs/options/vanilla
+}
+
+vanillaBaseline() {
+ source /etc/abs/options/vanillaBaseline
+}
+
+xero() {
+ source /etc/abs/options/xero
+}
+
+xerog() {
+ source /etc/abs/options/xerog
+}
+

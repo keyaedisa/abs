@@ -1,0 +1,31 @@
+#!/bin/bash
+# https://keyaedisa.github.io, https://github.com/keyaedisa
+
+export app_name="${0##*/}"
+
+source /etc/abs/misc/.bashFormatting
+source /etc/abs/misc/.functions
+source /etc/abs/options/.options
+
+#if [[ $1 == "-c" || $1 == "--custom" ]]; then
+#	custom
+#elif [[ $1 == "-h" || $1 == "--help" ]]; then
+#	helpOpt $1
+#elif [[ $1 == "-V" || $1 == "--version" ]]; then
+#	currentVersion
+#elif  [[ $1 == "-v" || $1 == "--releng" ]]; then
+#	vanilla
+#elif  [[ $1 == "-vb" || $1 == "--baseline" ]]; then
+#	vanillaBaseline
+#elif [[ $1 == "-x" || $1 == "--xero" || $1 == "xero" || $1 == "Xero" ]]; then
+#	xero
+#elif  [[ $1 == "-xg" || $1 == "--xerog" || $1 == "xerog" || $1 == "XeroG"  ]]; then
+#	xerog
+#elif [[ -n $1 ]]; then # If stdin is a not empty string not matching any  of the previous conditions then:
+#	echo "Sorry, abs does not recognize this option. Run ${fgCyan}dab -h${txReset} or ${fgCyan}dab --help (for more detailed version)${txReset} to display help message."
+#else
+#	listOptions
+#	read -p "What option would you like to select? " answer
+
+
+_${app_name}TUI $1
