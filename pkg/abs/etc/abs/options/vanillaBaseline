@@ -1,5 +1,5 @@
 #!/bin/bash
-# https://keyaedisa.github.io/
+# https://keyaedisa.github.io/ !!
 
 echo "Oki! Preparing to build a Vanilla Arch ISO using latest monthly ${fgCyan}Baseline${txReset} profile!"
 echo "Do keep in mind this ISO will have only just enough for you to boot it as a live ISO! ${fgRed}Nothing${txReset}more!"

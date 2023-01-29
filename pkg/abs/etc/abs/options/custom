@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # Written by Keyaedisa
-# https://keyaedisa.github.io/ https://github.com/keyaedisa/abs 
+# https://keyaedisa.github.io/ https://github.com/keyaedisa/abs !!
 
 checkSudo
 
 echo "${fgCyan}Step 1${txReset}: Getting ready to build your ${fgCyan}custom${txReset} ISO!"
 echo
 
-read -p "Please enter the name of your ${fgCyan}archiso${txReset} profile: " archisoProfile
+read -p "Please enter the name of your ${fgCyan}archiso${txReset} profile: " profile
 
 if [[ ! -d $archisoProfile ]]; then
 	echo "Couldn't find ${fgRed}${archisoProfile}${txReset}! Are you sure you're in the correct directory?"
@@ -24,8 +24,8 @@ echo "Oki! When ISO build is ${fgMagenta}done${txReset} you can find the ISO in 
 read -p "Where would you like the ${fgCyan}build${txReset} folder to be? : " buildDir
 echo "Oki! ${fgCyan}${buildDir}${txReset} will be where the build takes place!" && sleep 1.3
 
-	profile=${archisoProfile}
-	profiledef=${profile}/profiledef.sh
+	profile=$archisoProfile
+	profiledef=$profile/profiledef.sh
 	user=$(whoami)
 	echo $profile
 
