@@ -27,7 +27,6 @@ echo "Oki! ${fgCyan}${buildDir}${txReset} will be where the build takes place!" 
 	archisoProfile=$profile
 	profiledef=$profile/profiledef.sh
 	user=$(whoami)
-	echo $profile
 
 echo
 echo "${fgCyan}Step 2${txReset}: Making sure you have latest ${fgCyan}archiso${txReset}!"
