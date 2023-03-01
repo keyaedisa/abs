@@ -10,7 +10,7 @@ echo
 
 read -p "Please enter the name of your ${fgCyan}archiso${txReset} profile: " profile
 
-if [[ ! -d $archisoProfile ]]; then
+if [[ ! -d $profile ]]; then
 	echo "Couldn't find ${fgRed}${archisoProfile}${txReset}! Are you sure you're in the correct directory?"
 	exit
 else
