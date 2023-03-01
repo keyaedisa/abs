@@ -33,9 +33,9 @@ echo "Will be ${txUnderline}${fgRed}deleting${txReset} previous work directory $
 
 	if [[ -d $buildDir ]]; then
 		sudo rm -rf $buildDir
-		echo "Previous work directory ${fgCyan}found${txReset} and ${txUnderline}${fgRed}removed${txReset}!" && sleep 1.3
+		echo "Previous work directory ${fgCyan}found${txReset} and ${txUnderline}${fgRed}removed${txReset}!"
 	else
-		echo "${fgCyan}No${txReset} previous work directory found. Moving on!" && sleep 1.3
+		echo "${fgCyan}No${txReset} previous work directory found. Moving on!"
 	fi
 
 echo "Checking your profiles pacman.conf and adding abs package repo if not already present"
@@ -49,7 +49,7 @@ echo
 	currentVersion=$(sed -n 's/\(^iso_version=\)//p' $profiledef | sed 's/\([^"]*\)./\1/gi')
 	currentApplication=$(sed -n 's/\(^iso_application=\)//p' $profiledef | sed 's/\([^"]*\)./\1/gi')
 
-updateProfiledef="0" && sleep 1.7
+updateProfiledef="0"
 while [ $updateProfiledef != 1 ]; do
 
 echo "Below are the ${txUnderline}current${txReset} relevant values in your ${fgCyan}profiledef.sh${txReset}."
@@ -88,39 +88,39 @@ y | yes | Y | Yes | YES )
 	1 | Name | name | NAME)
 		read -p "${txUnderline}Current${txReset} ${fgCyan}ISO Name${txReset} is ${currentName}. What would you like to ${txBold}rename${txReset}? : " newName
 		echo
-		echo "Oki. This ${fgCyan}ISO${txReset} will now be named ${fgCyan}${newName}${txReset}!" && sleep 1.7
+		echo "Oki. This ${fgCyan}ISO${txReset} will now be named ${fgCyan}${newName}${txReset}!"
 		isoCodename=$(sed -n "s/\(^ISO_CODENAME=\)//p" $profile/airootfs/etc/dev-rel)
 		awk -v nN="$newName" -v iC="$isoCodename" 'NR==2, NR==2 {sub(iC, nN)}1' $profile/airootfs/etc/dev-rel >> dev-rel
 		mv dev-rel $profile/airootfs/etc/dev-rel
 		isoCodename=$(sed -n "s/\(^ISO_CODENAME=\)//p" $profile/airootfs/etc/dev-rel)
-		echo "Also changed ISO_CODENAME in dev-rel to ${fgCyan}${newName}${txReset}!" && sleep 1.7
+		echo "Also changed ISO_CODENAME in dev-rel to ${fgCyan}${newName}${txReset}!"
 		awk -v cN="$currentName" -v nN="$newName" 'NR==4, NR==4 {sub(cN, nN)}1' $profiledef >> profiledef
 		mv profiledef $profiledef
 		;;
 	2 | Label | LABEL | label )
 		read -p "${txUnderline}Current${txReset} ${fgCyan}ISO Label${txReset} is ${txUnderline}${currentLabel}${txReset}. What would you like to ${txBold}relabel${txReset}? : " newLabel
 		echo
-		echo "Oki. This ${fgCyan}ISO${txReset} will now be labeled ${fgCyan}${newLabel}${txReset}!" && sleep 1.7
+		echo "Oki. This ${fgCyan}ISO${txReset} will now be labeled ${fgCyan}${newLabel}${txReset}!"
 		awk -v cL="$currentLabel" -v nL="$newLabel" 'NR==5, NR==5 {sub(cL, nL)}1' $profiledef >> profiledef
 		mv profiledef $profiledef
 		;;
 	3 | Publisher | PUBLISHER | publisher )
 		read -p "${txUnderline}Current${txReset} ${fgCyan}ISO Publisher${txReset} is ${txUnderline}${currentPublisher}${txReset}. Who should be ${txBold}credited instead${txReset}? : " newPublisher
 		echo
-		echo "Oki. This ${fgCyan}ISO${txReset} will now be credited to ${fgCyan}${newPublisher}${txReset}!" && sleep 1.7
+		echo "Oki. This ${fgCyan}ISO${txReset} will now be credited to ${fgCyan}${newPublisher}${txReset}!"
 		awk -v cP="$currentPublisher" -v nP="$newPublisher" 'NR==6, NR==6 {sub(cP, nP)}1' $profiledef >> profiledef
 		mv profiledef $profiledef
 		;;
 	4 | Application | APPLICATION | application )
 		read -p "${txUnderline}Current${txReset} ${fgCyan}ISO Application${txReset} is ${txUnderline}${currentApplication}${txReset}. What should be the ${txBold}application instead${txReset}? : " newApplication
 		echo
-		echo "Oki. This ${fgCyan}ISO's application${txReset} will now be ${fgCyan}${newApplication}${txReset}!" && sleep 1.7
+		echo "Oki. This ${fgCyan}ISO's application${txReset} will now be ${fgCyan}${newApplication}${txReset}!"
 		sleep 1.3
 		awk -v cA="$currentApplication" -v nA="$newApplication" 'NR==7, NR==7 {sub(cA, nA)}1' $profiledef >> profiledef
 		mv profiledef $profiledef
 		;;
 	5 | FINISHED | Finished | finished )
-		echo "Awesome! Let's ${fgCyan}continue${txReset}!" && sleep 1.7
+		echo "Awesome! Let's ${fgCyan}continue${txReset}!"
 		finished="1"
 		easterEgg="0"
 		;;
@@ -137,7 +137,7 @@ y | yes | Y | Yes | YES )
 	updateProfiledef="1"
 	;;
 n | N | no | No | NO )
-	echo "Oki. Moving on!" && sleep 1.7
+	echo "Oki. Moving on!"
 	updateProfiledef="1"
 	easterEgg="0"
 	;;
@@ -160,7 +160,7 @@ isoBuild=$(sed -n "s/\(^ISO_BUILD=\)//p" $profile/airootfs/etc/dev-rel)
 awk -v cISOB="$isoBuild" -v nISOB="$dateBuild" 'NR==3, NR==3 {sub(cISOB, nISOB)}1' $profile/airootfs/etc/dev-rel >> dev-rel
 mv dev-rel $profile/airootfs/etc/dev-rel
 isoBuild=$(sed -n "s/\(^ISO_BUILD=\)//p" $profile/airootfs/etc/dev-rel)
-echo "Oki. ISO_BUILD in dev-rel now reads ${fgCyan}${isoBuild}${txReset}!" && sleep 1.7
+echo "Oki. ISO_BUILD in dev-rel now reads ${fgCyan}${isoBuild}${txReset}!"
 read -p "What would you like to set ISO_RELEASE to in dev-rel for ${fgCyan}release${txReset}? : " newRelease
 echo
 echo "Oki. ISO_RELEASE will now be set to ${fgCyan}${release}${txReset}!"
@@ -168,7 +168,7 @@ isoRelease=$(sed -n "s/\(^ISO_RELEASE=\)//p" $profile/airootfs/etc/dev-rel)
 awk -v cR="$isoRelease" -v nR="$newRelease" 'NR==1, NR==1 {sub(cR, nR)}1' $profile/airootfs/etc/dev-rel >> dev-rel
 mv dev-rel $profile/airootfs/etc/dev-rel
 echo "Oki. ${fgCyan}ISO_RELEASE${txReset} in dev-rel updated. ${fgCyan}${profile}/airootfs/etc/dev-rel${txReset} now reads: "
-sed -n '1,3p' $profile/airootfs/etc/dev-rel && sleep 1.7
+sed -n '1,3p' $profile/airootfs/etc/dev-rel
 
 echo
 echo "${fgCyan}Step 4${txReset}: Time to build ${fgCyan}ISO${txReset}. This ${txUnderline}will${txReset} take a while. Go grab a drink or something!"
