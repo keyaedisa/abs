@@ -188,7 +188,12 @@ echo
 echo "${fgCyan}Step 4${txReset}: Time to build ${fgCyan}ISO${txReset}. This ${txUnderline}will${txReset} take a while. Go grab a drink or something!"
 echo
 
-mkarchisoVerboseCheck
+sudo mkarchiso -v -w $buildDir -o $outDir $profile
+#sudo chown -R $user $buildDir
+sudo chown -R $user $outDir
+
+
+#mkarchisoVerboseCheck
 
 #echo "Build ${fgCyan}starts${txReset} in ${fgRed}5 seconds${txReset}!"
 #sleep 5
