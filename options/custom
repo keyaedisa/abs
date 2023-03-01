@@ -188,10 +188,11 @@ sed -n '1,3p' $profile/airootfs/etc/dev-rel && sleep 1.7
 echo
 echo "${fgCyan}Step 4${txReset}: Time to build ${fgCyan}ISO${txReset}. This ${txUnderline}will${txReset} take a while. Go grab a drink or something!"
 echo
-echo "Build ${fgCyan}starts${txReset} in ${fgRed}5 seconds${txReset}!"
-sleep 5
 
 mkarchisoVerboseCheck
+
+echo "Build ${fgCyan}starts${txReset} in ${fgRed}5 seconds${txReset}!"
+sleep 5
 
 echo
 echo "${fgCyan}Done!${txReset} Look in ${txBold}${outDir}${txReset} for your ${txUnderline}build and ISO folder${txReset}!"
