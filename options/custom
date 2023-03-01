@@ -191,8 +191,8 @@ echo
 
 mkarchisoVerboseCheck
 
-echo "Build ${fgCyan}starts${txReset} in ${fgRed}5 seconds${txReset}!"
-sleep 5
+#echo "Build ${fgCyan}starts${txReset} in ${fgRed}5 seconds${txReset}!"
+#sleep 5
 
 echo
 echo "${fgCyan}Done!${txReset} Look in ${txBold}${outDir}${txReset} for your ${txUnderline}build and ISO folder${txReset}!"
