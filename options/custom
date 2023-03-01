@@ -10,7 +10,7 @@ echo
 
 read -p "Please enter the name of your ${fgCyan}archiso${txReset} profile: " profile
 
-if [[ ! -d $profile ]]; then
+if [[ ! -d "${profile}" ]]; then
 	echo "Couldn't find ${fgRed}${archisoProfile}${txReset}! Are you sure you're in the correct directory?"
 	exit
 else
@@ -24,7 +24,7 @@ echo "Oki! When ISO build is ${fgMagenta}done${txReset} you can find the ISO in 
 read -p "Where would you like the ${fgCyan}build${txReset} folder to be? : " buildDir
 echo "Oki! ${fgCyan}${buildDir}${txReset} will be where the build takes place!" && sleep 1.3
 
-	profile=$archisoProfile
+	archisoProfile=$profile
 	profiledef=$profile/profiledef.sh
 	user=$(whoami)
 	echo $profile
@@ -35,7 +35,7 @@ echo
 
 	checkInternetConnection
 	isArchisoUpToDate
-	valenRepoAdder
+#	valenRepoAdder
 
 echo
 echo "${fgCyan}Step 3${txReset}:Getting ready to ${fgCyan}build the ISO${txReset}!"
