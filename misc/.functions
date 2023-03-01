@@ -58,7 +58,7 @@ fi
 
 
 _version() {
-buildVersion=3.5-20
+buildVersion=3.5-21
 
 	echo "${txBold}${fgBlue}Version${txReset}:"
 	echo "    ${txBold}${fgMagenta}${app_name}${txReset} v${fgCyan}${buildVersion}${txReset}!"
@@ -81,8 +81,7 @@ checkInternetConnection() {
 }
 
 isArchisoUpToDate() {
-	sudo pacman -Sy >> stfu.txt
-	sudo pacman -S archiso --needed --noconfirm > /dev/null 2>stfu.txt
+	sudo pacman -Sy archiso --needed --noconfirm > /dev/null 2>stfu.txt
 	if [[ -n $(sed -n 's/is up to date -- skipping//p' stfu.txt) ]]; then
 		echo "Latest archiso check ${fgGreen}succesful${txReset}!"
 		sudo rm stfu.txt

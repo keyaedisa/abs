@@ -122,7 +122,6 @@ y | yes | Y | Yes | YES )
 		read -p "${txUnderline}Current${txReset} ${fgCyan}ISO Application${txReset} is ${txUnderline}${currentApplication}${txReset}. What should be the ${txBold}application instead${txReset}? : " newApplication
 		echo
 		echo "Oki. This ${fgCyan}ISO's application${txReset} will now be ${fgCyan}${newApplication}${txReset}!"
-		sleep 1.3
 		awk -v cA="$currentApplication" -v nA="$newApplication" 'NR==7, NR==7 {sub(cA, nA)}1' $profiledef >> profiledef
 		mv profiledef $profiledef
 		;;
@@ -131,7 +130,7 @@ y | yes | Y | Yes | YES )
 		read -p "${txUnderline}Current${txReset} ${fgCyan}ISO version${txReset} is ${txUnderline}${currentVersion}${txReset}. What should be the ${txBold}version instead${txReset}? : " newVersion
 		echo
 		echo "Oki. This ${fgCyan}ISO's version${txReset} will be set to ${fgCyan}${newVersion}${txReset}!"
-		awk -v cV="$currentVersion" -v nV="$newVersion" 'NR==8, NR==8 {sub(cV, nV)}1' $profiledef >> profiledef
+		awk -v cV="$currentVersion" -v nV="$newVersion" 'NR==8, NR==8 {sub(cV, nV)}1' $profiledef > profiledef
 		mv profiledef $profiledef
 		;;
 	6 | FINISHED | Finished | finished )
