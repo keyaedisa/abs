@@ -98,11 +98,10 @@ deleteBuildDir() {
 		n | N | no | No )
 			delAfter=0
 			;;
-		* )
+		*  )
 			echo "yes or no plz"
 			;;
 	esac
-	done
 }
 
 isArchisoUpToDate() {
