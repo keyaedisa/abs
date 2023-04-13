@@ -2,7 +2,7 @@
 # List of functions used by abs duh
 # https://keyaedisa.github.io, https://github.com/keyaedisa
 
-export delAfter = 0;
+export delAfter='0'
 
 trap_ctrlc() {
 	echo
@@ -93,10 +93,10 @@ deleteBuildDir() {
 	read -p "Would you like to delete the build dir after iso creation?" ans
 	case $ans in
 		y | Y | yes | Yes )
-			delAfter=1
+			delAfter='1'
 			;;
 		n | N | no | No )
-			delAfter=0
+			delAfter='0'
 			;;
 		*  )
 			echo "yes or no plz"

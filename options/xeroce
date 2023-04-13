@@ -19,7 +19,6 @@ echo
 	cd ~/xero_xfce_iso/
 
 	searchForSourceGit $profile
-	deleteBuildDir $buildDir
 
 echo
 echo "${fgCyan}Step 2${txReset}: Making sure you have latest ${fgCyan}archiso${txReset}!"

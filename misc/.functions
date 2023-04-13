@@ -86,14 +86,11 @@ checkInternetConnection() {
 
 deleteBuildDir() {
 	buildDir=$1
-	if [[ $delAfter=1 ]]; then
-		rm -rf $buildDir
-		exit
-	fi
-	read -p "Would you like to delete the build dir after iso creation?" ans
+	read -p "Would you like to delete the build dir?" ans
 	case $ans in
 		y | Y | yes | Yes )
 			delAfter='1'
+			sudo rm -rf $buildDir
 			;;
 		n | N | no | No )
 			delAfter='0'
