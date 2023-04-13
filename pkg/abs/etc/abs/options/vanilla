@@ -33,7 +33,6 @@ else
 fi
 
 cd Arch-Vanilla
-deleteBuildDir $buildDir
 
 echo "abs will now check if you have the latest archiso so that abs only builds the ${fgCyan}newest${txReset} ISO possible."
 echo

@@ -34,6 +34,7 @@ else
 fi
 
 cd Arch-Vanilla-Baseline
+delteBuildDir $buildDir
 
 echo "abs will now check if you have the latest archiso so that we only build the ${fgCyan}newest${txReset} ISO possible."
 
@@ -55,7 +56,7 @@ echo "This will take a bit so perhaps make some coffee!"
 sudo mkarchiso -v -w $buildDir -o $outDir $profile
 #sudo chown -R $user $buildDir
 sudo chown -R $user $outDir
-deleteBuilDir $buildDir
+buildDirDeleter $buildDir
 
 echo
 echo "Done! Check out ${fgCyan}~/Arch-Vanilla-Baseline/ISO/${txReset} for your new ISO!"
