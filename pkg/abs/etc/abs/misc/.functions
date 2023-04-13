@@ -86,33 +86,33 @@ checkInternetConnection() {
 
 deleteBuildDir() {
 	buildDir=$1
-	skip=0
-	while [ skip != 1 ]; do
+	skip='0'
+	while [ skip -eq 0 ]; do
 	read -p "Would you like to delete the build dir after the install? (y/n): " ans
 	case $ans in
 		y | Y | yes | Yes )
 			delAfter='1'
-			skip=1
+			skip='1'
 			;;
 		n | N | no | No )
 			delAfter='0'
-			skip=1
+			skip='1'
 			;;
 		*  )
 			echo "yes or no plz"
 			;;
 	esac
 	done
-	while [ skip != 0 ]; do
+	while [ skip -eq 1 ]; do
 	read -p "Would you like to delete the source dir after the install? (y/n): " ans
 	case $ans in
 		y | Y | yes | Yes )
 			delAfterS='1'
-			skip=0
+			skip='0'
 			;;
 		n | N | no | No )
 			delAfterS='0'
-			skip=0
+			skip='0'
 			;;
 		*  )
 			echo "yes or no plz"
