@@ -87,6 +87,7 @@ deleteBuildDir() {
 	if [[ delAfter=1 ]]; then
 		rm -rf $buildDir
 		exit
+	fi
 	read -p "Would you like to delete the build dir after iso creation?" ans
 	case $ans in
 		y | Y | yes | Yes )
@@ -101,6 +102,7 @@ deleteBuildDir() {
 	esac
 	done
 
+	export delAfter
 }
 
 isArchisoUpToDate() {
