@@ -86,7 +86,7 @@ checkInternetConnection() {
 
 deleteBuildDir() {
 	buildDir=$1
-	read -p "Would you like to delete the build dir?" ans
+	read -p "Would you like to delete the build dir?(y/n): " ans
 	case $ans in
 		y | Y | yes | Yes )
 			delAfter='1'
