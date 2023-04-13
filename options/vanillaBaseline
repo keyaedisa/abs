@@ -34,7 +34,7 @@ else
 fi
 
 cd Arch-Vanilla-Baseline
-delteBuildDir $buildDir
+deleteBuildDir $buildDir
 
 echo "abs will now check if you have the latest archiso so that we only build the ${fgCyan}newest${txReset} ISO possible."
 
