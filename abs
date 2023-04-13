@@ -4,7 +4,6 @@
 # kum
 
 export app_name="${0##*/}"
-export delAfter=0;
 
 source /etc/abs/misc/.bashFormatting
 source /etc/abs/misc/.functions
