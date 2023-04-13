@@ -2,12 +2,12 @@
 # using fakeroot version 1.31
 pkgname = abs
 pkgbase = abs
-pkgver = 3.5-54
+pkgver = 3.5-55
 pkgdesc = CLI tool to automate the customization and build of custom and built in distros such as Vanilla Arch and XeroLinux.
 url = https://github.com/keyaedisa/abs
-builddate = 1681427310
+builddate = 1681427366
 packager = Unknown Packager
-size = 61139
+size = 61129
 arch = x86_64
 provides = abs
 depend = git
