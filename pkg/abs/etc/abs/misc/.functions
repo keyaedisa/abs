@@ -99,7 +99,6 @@ deleteBuildDir() {
 			echo "yes or no plz"
 		;;
 	esac
-	done
 
 	export delAfter
 }
