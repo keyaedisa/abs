@@ -2,6 +2,8 @@
 # List of functions used by abs duh
 # https://keyaedisa.github.io, https://github.com/keyaedisa
 
+export delAfter
+
 trap_ctrlc() {
 	echo
     echo
@@ -87,22 +89,21 @@ deleteBuildDir() {
 	if [[ $delAfter=1 ]]; then
 		rm -rf $buildDir
 		exit
+	else
+		read -p "Would you like to delete the build dir after iso creation?" ans
+		case $ans in
+			y | Y | yes | Yes )
+				delAfter=1
+			;;
+			n | N | no | No )
+				delAfter=0
+			;;
+			* )
+				echo "yes or no plz"
+			;;
+		esac
+		done
 	fi
-	read -p "Would you like to delete the build dir after iso creation?" ans
-	case $ans in
-		y | Y | yes | Yes )
-			delAfter=1
-		;;
-		n | N | no | No )
-			delAfter=0
-		;;
-		* )
-			echo "yes or no plz"
-		;;
-	esac
-	done
-
-	export delAfter
 }
 
 isArchisoUpToDate() {

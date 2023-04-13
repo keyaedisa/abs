@@ -94,13 +94,13 @@ deleteBuildDir() {
 		case $ans in
 			y | Y | yes | Yes )
 				delAfter=1
-			;;
+				;;
 			n | N | no | No )
 				delAfter=0
-			;;
+				;;
 			* )
 				echo "yes or no plz"
-			;;
+				;;
 		esac
 		done
 	fi
