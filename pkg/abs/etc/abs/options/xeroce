@@ -25,6 +25,7 @@ echo "${fgCyan}Step 2${txReset}: Making sure you have latest ${fgCyan}archiso${t
 echo
 
 	checkInternetConnection
+	deleteBuildDir $buildDir
 	isArchisoUpToDate
 
 echo
@@ -185,7 +186,7 @@ sudo mkarchiso -v -w $buildDir -o $outDir $profile
 sudo chown -R $user ~/XeroCE-Build/
 sudo chown -R $user $outDir
 cp ~/XeroCE-Build/iso/arch/pkglist.x86_64.txt  $outDir/xerolinux-ce-$(date +%Y.%m)-pkglist.txt
-deleteBuildDir $buildDir
+buildDirDeleter $buildDir
 
 echo
 echo "${fgCyan}Done!${txReset} Look in ${txBold}${outDir}${txReset} for your ${txUnderline}build and ISO folder${txReset}!"

@@ -90,7 +90,6 @@ deleteBuildDir() {
 	case $ans in
 		y | Y | yes | Yes )
 			delAfter='1'
-			sudo rm -rf $buildDir
 			;;
 		n | N | no | No )
 			delAfter='0'
@@ -99,6 +98,12 @@ deleteBuildDir() {
 			echo "yes or no plz"
 			;;
 	esac
+}
+
+buildDirDeleter() {
+	if [[ $delAfter = 1 ]]; then
+		sudo rm -rf $buildDir
+	fi
 }
 
 isArchisoUpToDate() {
