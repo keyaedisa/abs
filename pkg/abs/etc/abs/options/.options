@@ -25,3 +25,6 @@ xerog() {
  source /etc/abs/options/xerog
 }
 
+xeroce() {
+ source /etc/abs/options/xeroce
+ }

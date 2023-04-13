@@ -28,6 +28,7 @@ case $opt in
 		-vb | --baseline ) vanillaBaseline \ fin='1' ;;
 		-x | --xero | xero | Xero ) xero \ fin='1' ;;
 		-xg | --xerog | xerog | XeroG ) xerog \ fin='1' ;;
+		-xf | --xeroce | --xerof | xerof | XeroF ) xeroce \ fin='1' ;;
 		* ) echo
 			echo "${opt} is not a valid ${app_name} option. Try again."
 			echo
@@ -46,6 +47,7 @@ if [[ -n $1 ]]; then
 		-vb | --baseline ) vanillaBaseline ;;
 		-x | --xero | xero | Xero ) xero ;;
 		-xg | --xerog | xerog | XeroG ) xerog ;;
+		-xf | --xeroce | --xerof | xerof | XeroF ) xeroce \ fin='1' ;;
 		* )
 			echo "${1} is not a valid ${app_name} option. Try again."
 			_interactive
@@ -133,6 +135,13 @@ cloneGit() {
 				else
 					git clone https://github.com/xerolinux/xero_g_iso.git ~/xero_g_iso
 				fi
+			elif [[ $sourceGit == "XeroCE" ]]; then
+				if [[ -d ~/xero_xfce_iso ]]; then
+					rm -rf ~/xero_xfce_iso
+					git clone https://github.com/xerolinux/xero_xfce_iso.git ~/xero_xfce_iso
+				else
+					git clone https://github.com/xerolinux/xero_xfce_iso.git ~/xero_xfce_iso
+				fi
 			else
 				echo "This never happens. Congrats"
 			fi
@@ -164,6 +173,7 @@ listOptions() {
 	printf "    -vb,    \tBuild an official Vanilla Arch Monthly ISO but with only whats needed to boot.\n"
 	printf "    -x,     \tBuild a XeroLinux Arch ISO using latest source.\n"
 	printf "    -xg,    \tBuild a XeroLinux Gnome Arch ISO using latest source.\n"
+	printf "    -xf,    \tBuild a XeroLinux XFCE Arch ISO using latest source.\n"
 }
 
 searchForSourceGit() {
