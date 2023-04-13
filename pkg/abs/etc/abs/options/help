@@ -1,0 +1,79 @@
+#!/bin/bash
+# https://keyaedisa.github.io, https://github.com/keyaedisa !!
+
+case $1 in
+	-h )
+		echo "${txBold}${fgMagenta}abs${txReset} is a utility designed for building Arch ISO's whether custom or using one of abs's built in options."
+		echo "Use '--help' instead of '-h' to see a more detailed version of the help message."
+		echo
+		_version
+		listOptions
+		;;
+	--help )
+		echo "abs is a utility that makes it easy to build custom Arch ISO distributions."
+		echo "It can not only help you build your own custom distribution, but known distro's too!"
+		echo "abs is the official build utility for both KDE and Gnome versions of XeroLinux!"
+		echo "The functionality doesn't end there however as abs supports building the ${txUnderline}${fgCyan}LATEST Vanilla Arch ISO's${txReset} too!"
+		echo "Both releng (Latest Monthly) and baseline (Latest Monthly but bare minimal) are supported out of the box!"
+		echo "abs is a pride project of Keyaedisa! Check them out at https://keyaedisa.github.io! Feature requests welcome!"
+		echo "abs is more than ready to be integrated with you distro too, reach out!"
+		echo
+		_version
+		echo
+		echo "Read below for a brief description of each available option."
+		echo
+		echo "${txBold}${fgBlue}Usage${txReset}:"
+		echo "    abs [OPTIONS]"
+		echo "${txBold}${fgBlue}Options${txReset}:"
+		echo "    abs can be called with no options and an interactive menu will start"
+		echo "${txBold}${fgBlue}-c${txReset}"
+		echo "    ex: ${fgCyan}abs -c${txReset}, ${fgCyan}abs --custom${txReset}"
+		echo "    This will run the custom option. It is for the building of ${txBold}any${txReset} ${txUnderline}archiso${txReset} profile you may be working on."
+		echo "    ${txUnderline}It is not tied to or dependent on any Arch ISO or distribution${txReset}."
+		echo "    This option is flexible and once again supports the building of basically any archiso profile ${txUnderline}you provide${txReset}."
+		echo "    When abs is provided a profile it will look for it in the current directory. If not found it will exit and ask to be ran in the directory containing the profile"
+		echo
+		echo "${txBold}${fgBlue}-h${txReset}"
+		echo "    ex: ${fgCyan}abs -h${txReset}"
+		echo "    This option will bring up abs's help message."
+		echo "    If you have any other questions or issues reach out or open a ticket at ${fgCyan}https://github.com/keyaedisa/abs${txReset}"
+		echo
+		echo "${txBold}${fgBlue}--help${txReset}"
+		echo "    ex: ${fgCyan}abs --help${txReset}"
+		echo "    This option will bring up a more detailed version of abs's help message"
+		echo
+		echo "${txBold}${fgBlue}-V${txReset}"
+		echo "    ex: ${fgCyan}abs -V${txReset} ${fgCyan}abs --version${txReset}"
+		echo "    This option will list abs's current version."
+		echo
+		echo "${txBold}${fgBlue}-v${txReset}"
+		echo "    ex: ${fgCyan}abs -v${txReset}, ${fgCyan}abs --releng${txReset}"
+		echo "    This option will build you an ISO using the official Arch Linux monthly Releng archiso profile."
+		echo "    If you want to build the latest and greatest Vanilla Arch ISO this is the option for you."
+		echo "    This will build the same kind of ISO you would get from the Arch Linux website."
+		echo
+		echo "${txBold}${fgBlue}-vb${txReset}"
+		echo "    ex: ${fgCyan}abs -vb${txReset}, ${fgCyan}abs --baseline${txReset}"
+		echo "    This option will build you an ISO using the official Arch Linux monthly Baseline archiso profile."
+		echo "    This option will build an up to date Arch Linux ISO however, it will only have what is required to boot and nothing more."
+		echo "    This is for the ${txUnderline}experienced${txReset}. ${fgRed}Beware${txReset}."
+		echo
+		echo "${txBold}${fgBlue}-x${txReset}"
+		echo "    ex: ${fgCyan}abs -x${txReset}, ${fgCyan}abs --xero${txReset}"
+		echo "    This option is dedicated to the build of ${fgCyan}XeroLinux${txReset} using the ${txUnderline}official xero_iso git repo${txReset} as its source."
+		echo "    This option will ask you if you need to clone the xero_iso git repo if you aren't in it already or if it doesn't already exist in your home directory."
+		echo "    If you tell abs to clone the xero_iso git repo for you it will do so and place it in your ${txUnderline}home directory${txReset}."
+		echo "    The home directory is chosen so that you can easily move the cloned xero_iso build repo directory wherever you desire if need be."
+		echo
+		echo "${txBold}${fgBlue}-xg${txReset}"
+		echo "    ex: ${fgCyan}abs -xg${txReset}, ${fgCyan}abs --xerog${txReset}"
+		echo "    This option is dedicated to the build of ${fgCyan}XeroLinux Gnome Edition${txReset} using the ${txUnderline}official xero_g_iso git repo${txReset} as its source."
+		echo "    This option will ask you if you need to clone the xero_g_iso git repo if you aren't in it already or if it doesn't already exist in your home directory."
+		echo "    If you tell abs to clone the xero_g_iso git repo for you it will do so and place it in your ${txUnderline}home directory${txReset}."
+		echo "    The home directory is chosen so that you can easily move the cloned xero_g_iso build repo directory wherever you desire if need be."
+		echo
+		;;
+esac
+
+exit
+

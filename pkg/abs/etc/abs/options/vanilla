@@ -1,0 +1,64 @@
+#!/bin/bash
+# https://keyaedisa.github.io/ !!
+
+echo "Oki! Preparing to build a Vanilla Arch ISO using latest monthly ${fgCyan}Releng${txReset} profile!"
+echo
+
+	profile=releng
+	profiledef=$profile/profiledef.sh
+	user=$(whoami)
+	outDir=ISO
+	buildDir=Build
+
+cd
+
+echo "First abs will check to see if you have used this option before."
+echo "Should abs find the directory this option uses, abs will preserve it so that any older ISO's will not be lost."
+echo "The build directory however will be destroyed and remade."
+echo
+
+if [[ -d Arch-Vanilla ]]; then
+	echo "abs has ${fgCyan}found${txReset} the ${fgCyan}Arch-Vanilla${txReset} directory this option uses!"
+	echo "abs will now change into that directory and empty the build folder before moving forward."
+	echo
+	sudo rm -rf Arch-Vanilla/Build && mkdir Arch-Vanilla/Build
+else
+	echo "abs could ${fgRed}not${txReset} locate the directory this option uses. abs will now create it."
+	mkdir Arch-Vanilla
+	mkdir Arch-Vanilla/ISO
+	mkdir Arch-Vanilla/Build
+	echo "${fgCyan}Arch-Vanilla${txReset} directory has been created and within it exist folders labeled ${fgCyan}ISO${txReset} and ${fgCyan}Build${txReset}."
+	echo "abs will now change into the ${fgCyan}Arch-Vanilla${txReset} directory and move onto the next step."
+	echo
+fi
+
+cd Arch-Vanilla
+
+echo "abs will now check if you have the latest archiso so that abs only builds the ${fgCyan}newest${txReset} ISO possible."
+echo
+
+checkInternetConnection
+isArchisoUpToDate
+
+echo "abs will now copy over the Latest Monthly ${fgCyan}Releng${txReset} Arch Profile into this directory."
+echo
+
+sudo rm -rf releng
+cp -rf /usr/share/archiso/configs/releng/ .
+#valenRepoAdder releng
+
+echo "We are all setup to build the ${fgCyan}latest releng${txReset} Vanilla Arch Monthly ISO. Lets Begin!"
+echo "ISO will be found in ${fgCyan}~/Arch-Vanilla/ISO/${txReset}!"
+echo "Build folder will be found in ${fgCyan}~/Arch-Vanilla/Build/${txReset}!"
+echo "This will take a bit so perhaps make some coffee!"
+echo
+
+sudo mkarchiso -v -w $buildDir -o $outDir $profile
+#sudo chown -R $user $buildDir
+sudo chown -R $user $outDir
+
+echo "Done! Check out ${fgCyan}~/Arch-Vanilla/ISO/${txReset} for your new ISO!"
+echo "${fgCyan}Done!${txReset} Look in ${txBold}${outDir}${txReset} for your ${txUnderline}build and ISO folder${txReset}!"
+echo "Made with ${fgRed}love${txReset} by your ${fgMagenta}favorite genderless${txReset} being ${txUnderline}${fgMagenta}Keyaedisa${txReset}!"
+echo "${txUnderline}${fgCyan}https://keyaedisa.github.io${txReset}, ${txUnderline}${fgCyan}https://github.com/keyaedisa${txReset}, ${txUnderline}${fgCyan}https://keyaedisa.carrd.co${txReset}!"
+

@@ -1,0 +1,64 @@
+#!/bin/bash
+# https://keyaedisa.github.io/ !!
+
+echo "Oki! Preparing to build a Vanilla Arch ISO using latest monthly ${fgCyan}Baseline${txReset} profile!"
+echo "Do keep in mind this ISO will have only just enough for you to boot it as a live ISO! ${fgRed}Nothing${txReset}more!"
+echo
+
+	profile=baseline
+	profiledef=$profile/profiledef.sh
+	user=$(whoami)
+	outDir=ISO
+	buildDir=Build
+
+cd
+
+echo "First abs will check to see if you have used this option before."
+echo "Should abs find the directory this option uses, abs will preserve it so that any older ISO's will not be lost."
+echo "The build directory however will be destroyed and remade."
+echo
+
+if [[ -d Arch-Vanilla-Baseline ]]; then
+	echo "abs has ${fgCyan}found${txReset} the ${fgCyan}Arch-Vanilla-Baseline${txReset} directory this option uses!"
+	echo "abs will now change into that directory and empty the build folder before moving forward."
+	echo
+	sudo rm -rf Arch-Vanilla-Baseline/Build && mkdir Arch-Vanilla-Baseline/Build
+else
+	echo "abs could ${fgRed}not${txReset} locate the directory this option uses. abs will now create it."
+	mkdir Arch-Vanilla-Baseline
+	mkdir Arch-Vanilla-Baseline/ISO
+	mkdir Arch-Vanilla-Baseline/Build
+	echo "${fgCyan}Arch-Vanilla-Baseline${txReset} directory has been created and within it exist folders labeled ${fgCyan}ISO${txReset} and ${fgCyan}Build${txReset}."
+	echo "abs will now change into the ${fgCyan}Arch-Vanilla-Baseline${txReset} directory and move onto the next step."
+	echo
+fi
+
+cd Arch-Vanilla-Baseline
+
+echo "abs will now check if you have the latest archiso so that we only build the ${fgCyan}newest${txReset} ISO possible."
+
+checkInternetConnection
+isArchisoUpToDate
+
+echo "abs will now copy over the Latest Monthly ${fgCyan}Baseline${txReset} Arch Profile into this directory."
+
+sudo rm -rf baseline
+cp -rf /usr/share/archiso/configs/baseline/ .
+#valenRepoAdder baseline
+
+echo
+echo "We are all setup to build the ${fgCyan}latest Baseline${txReset} Vanilla Arch Monthly ISO. Lets Begin!"
+echo "ISO will be found in ${fgCyan}~/Arch-Vanilla-Baseline/ISO/${txReset}!"
+echo "Build folder will be found in ${fgCyan}~/Arch-Vanilla-Baseline/Build/${txReset}!"
+echo "This will take a bit so perhaps make some coffee!"
+
+sudo mkarchiso -v -w $buildDir -o $outDir $profile
+#sudo chown -R $user $buildDir
+sudo chown -R $user $outDir
+
+echo
+echo "Done! Check out ${fgCyan}~/Arch-Vanilla-Baseline/ISO/${txReset} for your new ISO!"
+echo "${fgCyan}Done!${txReset} Look in ${txBold}${outDir}${txReset} for your ${txUnderline}build and ISO folder${txReset}!"
+echo "Made with ${fgRed}love${txReset} by your ${fgMagenta}favorite genderless${txReset} being ${txUnderline}{fgMagenta}Keyaedisa${txReset}!"
+echo "${txUnderline}${fgCyan}https://keyaedisa.github.io${txReset}, ${txUnderline}${fgCyan}https://github.com/keyaedisa${txReset}, ${txUnderline}${fgCyan}https://keyaedisa.carrd.co${txReset}!"
+
