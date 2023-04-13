@@ -27,4 +27,4 @@ xerog() {
 
 xeroce() {
  source /etc/abs/options/xeroce
- }
+}

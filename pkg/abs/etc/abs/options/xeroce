@@ -16,6 +16,7 @@ echo
 	buildDir=$HOME"/${profile}-Build"
 	outDir=$HOME"/${profile}-Out"
 	user=$(whoami)
+	cd ~/xero_xfce_iso/
 
 	searchForSourceGit $profile
 
@@ -43,7 +44,7 @@ echo "Checking your profiles pacman.conf and adding ${BT} package repo if not al
 echo
 echo "${fgCyan}Step 3.5${txReset}: Optionally updating ${fgCyan}references${txReset} and ${fgCyan}profiledef.sh${txReset}!"
 echo
-
+	
 	currentName=$(sed -n 's/\(^iso_name=\)//p' $profiledef | sed 's/\([^"]*\)./\1/gi')
 	currentLabel=$(sed -n 's/\(^iso_label=\)//p' $profiledef | sed 's/\([^"]*\)./\1/gi')
 	currentPublisher=$(sed -n 's/\(^iso_publisher=\)//p' $profiledef | sed 's/\([^"]*\)./\1/gi')
