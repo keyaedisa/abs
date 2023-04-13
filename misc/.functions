@@ -113,6 +113,13 @@ deleteBuildDir() {
 }
 
 buildDirDeleter() {
+	if [[ $delAfter = 1 && $delAfterS = 1 ]]; then
+		echo "Deleting Source and Build directories. This could take some time"
+	elif [[ $delAfter = 1 ]]; then
+		echo "Deleting Build directory. This could take some time"
+	elif [[ $delAfterS = 1 ]]; then
+		echo "Deleting Source directory. This could take some time"
+	fi
 	if [[ $delAfter = 1 ]]; then
 		sudo rm -rf $buildDir
 	fi
