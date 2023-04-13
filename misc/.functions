@@ -101,7 +101,6 @@ deleteBuildDir() {
 	esac
 	done
 
-	export delAfter
 }
 
 isArchisoUpToDate() {
