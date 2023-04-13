@@ -2,7 +2,7 @@
 # List of functions used by abs duh
 # https://keyaedisa.github.io, https://github.com/keyaedisa
 
-export delAfter
+export delAfter = 0;
 
 trap_ctrlc() {
 	echo
