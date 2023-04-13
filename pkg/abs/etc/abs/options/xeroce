@@ -16,9 +16,9 @@ echo
 	buildDir=$HOME"/${profile}-Build"
 	outDir=$HOME"/${profile}-Out"
 	user=$(whoami)
-	cd ~/xero_xfce_iso/
 
 	searchForSourceGit $profile
+	cd ~/xero_xfce_iso/
 
 echo
 echo "${fgCyan}Step 2${txReset}: Making sure you have latest ${fgCyan}archiso${txReset}!"

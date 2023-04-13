@@ -175,6 +175,7 @@ cloneGit() {
 		n | N | no | No | NO )
 			echo "Oki. abs will not clone. Please run abs in the directory containing the xero profile"
 			finished="1"
+			exit
 			;;
 		* )
 			echo "abs does not understand your response. Please try again. ${fgGreen}Y${txReset} or ${fgRed}N${txReset}."

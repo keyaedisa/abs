@@ -98,11 +98,27 @@ deleteBuildDir() {
 			echo "yes or no plz"
 			;;
 	esac
+	read -p "Would you like to delete the source dir after the install? (y/n): " ans
+	case $ans in
+		y | Y | yes | Yes )
+			delAfterS='1'
+			;;
+		n | N | no | No )
+			delAfterS='0'
+			;;
+		*  )
+			echo "yes or no plz"
+			;;
+	esac
 }
 
 buildDirDeleter() {
 	if [[ $delAfter = 1 ]]; then
 		sudo rm -rf $buildDir
+	fi
+	if [[ $delAfterS = 1 ]]; then
+		dir=$(pwd)
+		cd ../ && rm -rf $dir
 	fi
 }
 
