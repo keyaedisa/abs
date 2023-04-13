@@ -89,15 +89,15 @@ deleteBuildDir() {
 		exit
 	read -p "Would you like to delete the build dir after iso creation?" ans
 	case $ans in
-		yY | yes | Yes )
+		y | Y | yes | Yes )
 			delAfter=1
-			;;
-		nN | no | No )
+		;;
+		n | N | no | No )
 			delAfter=0
-			;;
+		;;
 		* )
 			echo "yes or no plz"
-			;;
+		;;
 	esac
 	done
 
