@@ -84,7 +84,7 @@ checkInternetConnection() {
 
 deleteBuildDir() {
 	buildDir=$1
-	if [[ delAfter=1 ]]; then
+	if [[ $delAfter=1 ]]; then
 		rm -rf $buildDir
 		exit
 	fi
