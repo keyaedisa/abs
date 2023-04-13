@@ -2,7 +2,7 @@
 
 # Written by Keyaedisa
 # https://keyaedisa.github.io/ !!
-# Made specific to XeroLinuxKDE
+# Made specific to XeroLinuxXFCE
 
 checkSudo
 
@@ -18,6 +18,7 @@ echo
 	user=$(whoami)
 
 	searchForSourceGit $profile
+	delBuildDir $buildDir
 
 echo
 echo "${fgCyan}Step 2${txReset}: Making sure you have latest ${fgCyan}archiso${txReset}!"
@@ -181,6 +182,7 @@ sudo mkarchiso -v -w $buildDir -o $outDir $profile
 sudo chown -R $user ~/Xero-Build
 sudo chown -R $user $outDir
 cp ~/Xero-Build/iso/arch/pkglist.x86_64.txt  $outDir/xerolinux-$(date +%Y.%m)-pkglist.txt
+delBuildDir $buildDir
 
 echo
 echo "${fgCyan}Done!${txReset} Look in ${txBold}${outDir}${txReset} for your ${txUnderline}build and ISO folder${txReset}!"

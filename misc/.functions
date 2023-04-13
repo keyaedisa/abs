@@ -82,6 +82,28 @@ checkInternetConnection() {
 	fi
 }
 
+deleteBuildDir() {
+	buildDir=$1
+	if [[ delAfter=1 ]]; then
+		rm -rf $buildDir
+		exit
+	read -p "Would you like to delete the build dir after iso creation?" ans
+	case $ans in
+		yY | yes | Yes )
+			delAfter=1
+			;;
+		nN | no | No )
+			delAfter=0
+			;;
+		* )
+			echo "yes or no plz"
+			;;
+	esac
+	done
+
+	export delAfter
+}
+
 isArchisoUpToDate() {
 	sudo pacman -Sy archiso --needed --noconfirm > /dev/null 2>stfu.txt
 	if [[ -n $(sed -n 's/is up to date -- skipping//p' stfu.txt) ]]; then
