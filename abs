@@ -1,13 +1,11 @@
 #!/bin/bash
 # https://keyaedisa.github.io, https://github.com/keyaedisa
 
-# kum
-
 export app_name="${0##*/}"
 
-source /etc/abs/misc/.bashFormatting
-source /etc/abs/misc/.functions
-source /etc/abs/options/.options
+source /etc/abs/include/.bashFormatting
+source /etc/abs/include/.functions
+source /etc/abs/include/.options
 
 #if [[ $1 == "-c" || $1 == "--custom" ]]; then
 #	custom

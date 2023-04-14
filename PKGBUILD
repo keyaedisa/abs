@@ -6,7 +6,7 @@
 # Maintainer: Your Name <keyaedisa>
 pkgname="abs"
 pkgver=3.5
-pkgrel=60
+pkgrel=61
 epoch=
 pkgdesc="CLI tool to automate the customization and build of custom and built in distros such as Vanilla Arch and XeroLinux."
 arch=('x86_64')
@@ -37,8 +37,8 @@ package() {
 	mkdir -p "${pkgdir}/usr/local/bin/"
 	cp "${srcdir}/gc/abs" "${pkgdir}/usr/local/bin/abs"
 	mkdir -p "${pkgdir}/etc/abs/"
-	cp -rf "${srcdir}/gc/misc/" "${pkgdir}/etc/abs/"
-	cp -rf "${srcdir}/gc/options/" "${pkgdir}/etc/abs/"
+	cp -rf "${srcdir}/gc/include/" "${pkgdir}/etc/abs/"
+#	cp -rf "${srcdir}/gc/options/" "${pkgdir}/etc/abs/"
 	rm -rf "../gc"
 	rm -r "${srcdir}"
 }
