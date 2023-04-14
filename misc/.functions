@@ -208,7 +208,7 @@ cloneGit() {
 			echo "Done."
 			;;
 		n | N | no | No | NO )
-			echo "Oki. abs will not clone. Please run abs in the directory containing the xero profile"
+			echo "Oki. abs will not clone. Please run abs in the directory containing the ${sourceGit} profile"
 			finished="1"
 			exit
 			;;

@@ -196,7 +196,7 @@ cloneGit() {
 			elif [[ $sourceGit == "XeroCE" ]]; then
 				if [[ -d ~/xero_xfce_iso ]]; then
 					rm -rf ~/xero_xfce_iso
-					git clone https://github.com/xerolinux/xero_xfce_iso.git ~/xero_xfce_iso &&
+					git clone https://github.com/xerolinux/xero_xfce_iso.git ~/xero_xfce_iso
 				else
 					git clone https://github.com/xerolinux/xero_xfce_iso.git ~/xero_xfce_iso
 				fi
@@ -236,7 +236,7 @@ listOptions() {
 	printf "    -xf,    \tBuild a XeroLinux XFCE Arch ISO using latest source.\n"
 }
 
-export searchForSourceGit() {
+searchForSourceGit() {
 	sourceGit=$1
 	if [[ ! -d $sourceGit ]]; then
 		echo "Couldn't find ${fgRed}${sourceGit}${txReset} git in the current directory!"
