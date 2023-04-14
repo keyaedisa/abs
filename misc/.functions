@@ -184,6 +184,7 @@ cloneGit() {
 				else
 					git clone https://github.com/xerolinux/xero_iso.git ~/xero_iso
 				fi
+				cd ~/xero_iso
 			elif [[ $sourceGit == "XeroG" ]]; then
 				if [[ -d ~/xero_g_iso ]]; then
 					rm -rf ~/xero_g_iso
@@ -191,13 +192,15 @@ cloneGit() {
 				else
 					git clone https://github.com/xerolinux/xero_g_iso.git ~/xero_g_iso
 				fi
+				cd ~/xero_g_iso
 			elif [[ $sourceGit == "XeroCE" ]]; then
 				if [[ -d ~/xero_xfce_iso ]]; then
 					rm -rf ~/xero_xfce_iso
-					git clone https://github.com/xerolinux/xero_xfce_iso.git ~/xero_xfce_iso
+					git clone https://github.com/xerolinux/xero_xfce_iso.git ~/xero_xfce_iso &&
 				else
 					git clone https://github.com/xerolinux/xero_xfce_iso.git ~/xero_xfce_iso
 				fi
+				cd ~/xero_xfce_iso
 			else
 				echo "This never happens. Congrats"
 			fi

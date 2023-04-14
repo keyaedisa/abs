@@ -87,7 +87,7 @@ checkInternetConnection() {
 deleteBuildDir() {
 	buildDir=$1
 	skip=0
-	while [ skip -eq 0 ]; do
+	while [ $skip -eq 0 ]; do
 	read -p "Would you like to delete the build dir after the install? (y/n): " ans
 	case $ans in
 		y | Y | yes | Yes )
@@ -103,7 +103,7 @@ deleteBuildDir() {
 			;;
 	esac
 	done
-	while [ skip -eq 1 ]; do
+	while [ $skip -eq 1 ]; do
 	read -p "Would you like to delete the source dir after the install? (y/n): " ans
 	case $ans in
 		y | Y | yes | Yes )
