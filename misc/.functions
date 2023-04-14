@@ -236,7 +236,7 @@ listOptions() {
 	printf "    -xf,    \tBuild a XeroLinux XFCE Arch ISO using latest source.\n"
 }
 
-searchForSourceGit() {
+export searchForSourceGit() {
 	sourceGit=$1
 	if [[ ! -d $sourceGit ]]; then
 		echo "Couldn't find ${fgRed}${sourceGit}${txReset} git in the current directory!"
