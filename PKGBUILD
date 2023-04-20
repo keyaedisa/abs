@@ -5,8 +5,8 @@
 
 # Maintainer: Your Name <keyaedisa>
 pkgname="abs"
-pkgver=3.5
-pkgrel=61
+pkgver=3.6
+pkgrel=0
 epoch=
 pkgdesc="CLI tool to automate the customization and build of custom and built in distros such as Vanilla Arch and XeroLinux."
 arch=('any')
