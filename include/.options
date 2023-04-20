@@ -2,29 +2,29 @@
 # https://keyaedisa.github.io, https://github.com/keyaedisa !!
 
 custom() {
- source /etc/abs/include/custom
+ source /etc/$app_name/include/custom
 }
 
 _help() {
- source /etc/abs/include/help
+ source /etc/$app_name/include/help
 }
 
 vanilla() {
- source /etc/abs/include/vanilla
+ source /etc/$app_name/include/vanilla
 }
 
 vanillaBaseline() {
- source /etc/abs/include/vanillaBaseline
+ source /etc/$app_name/include/vanillaBaseline
 }
 
 xero() {
- source /etc/abs/include/xero
+ source /etc/$app_name/include/xero
 }
 
 xerog() {
- source /etc/abs/include/xerog
+ source /etc/$app_name/include/xerog
 }
 
 xeroce() {
- source /etc/abs/include/xeroce
+ source /etc/$app_name/include/xeroce
 }

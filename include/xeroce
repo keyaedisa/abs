@@ -17,6 +17,7 @@ echo
 	outDir=$HOME"/${profile}-Out"
 	user=$(whoami)
 
+	isArchisoUpToDate
 	searchForSourceGit $profile
 
 echo
@@ -25,7 +26,6 @@ echo
 
 	checkInternetConnection
 	deleteBuildDir $buildDir
-	isArchisoUpToDate
 
 echo
 echo "${fgCyan}Step 3${txReset}:Getting ready to ${fgCyan}build the ISO${txReset}!"

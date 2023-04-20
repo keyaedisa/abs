@@ -19,21 +19,25 @@ echo "Welcome to the ${app_name} TUI. See below for how to use ${app_name}."
 echo
 fin='0'
 while [ $fin != 1 ]; do
-listOptions
+listOptions ${app_name}
 echo
 read -p "What option would you like to select? : " opt
 case $opt in
-		-c | --custom )	custom \ fin='1' ;;
-		-h | --help ) _help $opt ;;
-		-V | --version ) _version \ fin='1' ;;
-		-v | --releng ) vanilla \ fin='1' ;;
-		-vb | --baseline ) vanillaBaseline \ fin='1' ;;
-		-x | --xero | xero | Xero ) xero \ fin='1' ;;
-		-xg | --xerog | xerog | XeroG ) xerog \ fin='1' ;;
-		-xf | --xeroce | --xerof | xerof | XeroF ) xeroce \ fin='1' ;;
-		* ) echo
-			echo "${opt} is not a valid ${app_name} option. Try again."
-			echo
+		-c | c | --custom )	custom \ fin='1' ;;
+		-h | h | --help ) _help $opt ;;
+		-V | V | --version ) _version \ fin='1' ;;
+		-v | v | --releng ) vanilla \ fin='1' ;;
+		-vb | vb | --baseline ) vanillaBaseline \ fin='1' ;;
+		-x | x | --xero | xero | Xero ) xero \ fin='1' ;;
+		-xg | xg | --xerog | xerog | XeroG ) xerog \ fin='1' ;;
+		-xf | xf | --xeroce | --xerof | xerof | XeroF ) xeroce \ fin='1' ;;
+		* ) if [[ ${app_name} = "dabs" ]]; then
+				_interactiveD $opt
+			else
+				echo
+				echo "${opt} is not a valid ${app_name} option. Try again."
+				echo
+			fi
 			;;
 esac
 done
@@ -51,8 +55,12 @@ if [[ -n $1 ]]; then
 		-xg | --xerog | xerog | XeroG ) xerog ;;
 		-xf | --xeroce | --xerof | xerof | XeroF ) xeroce \ fin='1' ;;
 		* )
-			echo "${1} is not a valid ${app_name} option. Try again."
-			_interactive
+			if [[ ${app_name} = "dabs" ]]; then
+				_dabsTUI $1
+			else
+				echo "${1} is not a valid ${app_name} option. Try again."
+				_interactive
+			fi
 			;;
 	esac
 elif [[ -z $1 ]]; then
@@ -62,10 +70,14 @@ fi
 
 
 _version() {
-buildVersion=3.5-21
+if [[ $app_name = "abs" ]]; then
+	buildVersion=3.5-21
 
 	echo "${txBold}${fgBlue}Version${txReset}:"
 	echo "    ${txBold}${fgMagenta}${app_name}${txReset} v${fgCyan}${buildVersion}${txReset}!"
+elif [[ $app_name = "dabs" ]]; then
+	_versionD
+fi
 
 }
 
@@ -225,15 +237,20 @@ listOptions() {
 	echo "    ${app_name} [OPTIONS]"
 	printf "${txBold}${fgBlue}Options${txReset}:\n"
 	printf "    ${app_name} can be called with no options and an interactive menu will start\n"
-	printf "    -c,     \tBuild an Arch ISO using a custom profile.\n"
-	printf "    -h,     \tDisplay help message and exit.\n"
-	printf "    --help, \tDisplay more detailed help message and exit.\n"
-	printf "    -V,     \tDisplay current abs version.\n"
-	printf "    -v,     \tBuild an official Vanilla Arch Monthly ISO.\n"
-	printf "    -vb,    \tBuild an official Vanilla Arch Monthly ISO but with only whats needed to boot.\n"
-	printf "    -x,     \tBuild a XeroLinux Arch ISO using latest source.\n"
-	printf "    -xg,    \tBuild a XeroLinux Gnome Arch ISO using latest source.\n"
-	printf "    -xf,    \tBuild a XeroLinux XFCE Arch ISO using latest source.\n"
+	printf "    	-c,     \t\tBuild an Arch ISO using a custom profile.\n"
+	printf "    	-h,     \t\tDisplay help message and exit.\n"
+	printf "    	--help, \t\tDisplay more detailed help message and exit.\n"
+	printf "    	-V,     \t\tDisplay current abs version.\n"
+	printf "    	-v,     \t\tBuild an official Vanilla Arch Monthly ISO.\n"
+	printf "    	-vb,    \t\tBuild an official Vanilla Arch Monthly ISO but with only whats needed to boot.\n"
+	printf "    	-x,     \t\tBuild a XeroLinux Arch ISO using latest source.\n"
+	printf "    	-xg,    \t\tBuild a XeroLinux Gnome Arch ISO using latest source.\n"
+	printf "    	-xf,    \t\tBuild a XeroLinux XFCE Arch ISO using latest source.\n"
+	if [[ $1 = "dabs" ]]; then
+	printf "	-b		\tBuild and push to repo.\n"
+	printf "	-m		\tMerge Dev repo to Production.\n"
+	printf "	-g		\tGit Push.\n"
+	fi
 }
 
 searchForSourceGit() {

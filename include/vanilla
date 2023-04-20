@@ -7,41 +7,41 @@ echo
 	profile=releng
 	profiledef=$profile/profiledef.sh
 	user=$(whoami)
-	outDir=ISO
+	outDir=~/Arch-Vanilla-Out
 	buildDir=Build
 
 cd
+isArchisoUpToDate
 
-echo "First abs will check to see if you have used this option before."
-echo "Should abs find the directory this option uses, abs will preserve it so that any older ISO's will not be lost."
+echo "First ${app_name} will check to see if you have used this option before."
+echo "Should ${app_name} find the directory this option uses, ${app_name} will preserve it so that any older ISO's will not be lost."
 echo "The build directory however will be destroyed and remade."
 echo
 
-if [[ -d Arch-Vanilla ]]; then
-	echo "abs has ${fgCyan}found${txReset} the ${fgCyan}Arch-Vanilla${txReset} directory this option uses!"
-	echo "abs will now change into that directory and empty the build folder before moving forward."
+if [[ -d ~/Arch-Vanilla ]]; then
+	echo "${app_name} has ${fgCyan}found${txReset} the ${fgCyan}Arch-Vanilla${txReset} directory this option uses!"
+	echo "${app_name} will now change into that directory and empty the build folder before moving forward."
 	echo
 	sudo rm -rf Arch-Vanilla/Build && mkdir Arch-Vanilla/Build
 else
-	echo "abs could ${fgRed}not${txReset} locate the directory this option uses. abs will now create it."
+	echo "${app_name} could ${fgRed}not${txReset} locate the directory this option uses. ${app_name} will now create it."
 	mkdir Arch-Vanilla
-	mkdir Arch-Vanilla/ISO
+	mkdir Arch-Vanilla-Out
 	mkdir Arch-Vanilla/Build
 	echo "${fgCyan}Arch-Vanilla${txReset} directory has been created and within it exist folders labeled ${fgCyan}ISO${txReset} and ${fgCyan}Build${txReset}."
-	echo "abs will now change into the ${fgCyan}Arch-Vanilla${txReset} directory and move onto the next step."
+	echo "${app_name} will now change into the ${fgCyan}Arch-Vanilla${txReset} directory and move onto the next step."
 	echo
 fi
 
 cd Arch-Vanilla
 deleteBuildDir $buildDir
 
-echo "abs will now check if you have the latest archiso so that abs only builds the ${fgCyan}newest${txReset} ISO possible."
+echo "${app_name} will now check if you have the latest archiso so that ${app_name} only builds the ${fgCyan}newest${txReset} ISO possible."
 echo
 
 checkInternetConnection
-isArchisoUpToDate
 
-echo "abs will now copy over the Latest Monthly ${fgCyan}Releng${txReset} Arch Profile into this directory."
+echo "${app_name} will now copy over the Latest Monthly ${fgCyan}Releng${txReset} Arch Profile into this directory."
 echo
 
 sudo rm -rf releng
@@ -60,7 +60,6 @@ sudo chown -R $user $outDir
 buildDirDeleter $buildDir
 
 echo "Done! Check out ${fgCyan}~/Arch-Vanilla/ISO/${txReset} for your new ISO!"
-echo "${fgCyan}Done!${txReset} Look in ${txBold}${outDir}${txReset} for your ${txUnderline}build and ISO folder${txReset}!"
 echo "Made with ${fgRed}love${txReset} by your ${fgMagenta}favorite genderless${txReset} being ${txUnderline}${fgMagenta}Keyaedisa${txReset}!"
-echo "${txUnderline}${fgCyan}https://keyaedisa.github.io${txReset}, ${txUnderline}${fgCyan}https://github.com/keyaedisa${txReset}!"
+echo "${txUnderline}${fgCyan}https://keyaedisa.github.io${txReset}, ${txUnderline}${fgCyan}https://github.com/keyaedisa${txReset}, ${txUnderline}${fgCyan}https://keyaedisa.carrd.co${txReset}!"
 

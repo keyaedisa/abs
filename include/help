@@ -10,7 +10,7 @@ case $1 in
 		listOptions
 		;;
 	--help )
-		echo "abs is a utility that makes it easy to build custom Arch ISO distributions."
+		echo "${app_name} is a utility that makes it easy to build custom Arch ISO distributions."
 		echo "It can not only help you build your own custom distribution, but known distro's too!"
 		echo "abs is the official build utility for both KDE and Gnome versions of XeroLinux!"
 		echo "The functionality doesn't end there however as abs supports building the ${txUnderline}${fgCyan}LATEST Vanilla Arch ISO's${txReset} too!"
