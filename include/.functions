@@ -71,7 +71,7 @@ fi
 
 _version() {
 if [[ $app_name = "abs" ]]; then
-buildVersion=3.6-0
+buildVersion=3.6-1
 
 	echo "${txBold}${fgBlue}Version${txReset}:"
 	echo "    ${txBold}${fgMagenta}${app_name}${txReset} v${fgCyan}${buildVersion}${txReset}!"
@@ -153,7 +153,7 @@ buildDirDeleter() {
 isArchisoUpToDate() {
 	sudo pacman -Sy archiso --needed --noconfirm > /dev/null 2>stfu.txt
 	if [[ -n $(sed -n 's/is up to date -- skipping//p' stfu.txt) ]]; then
-		echo "Latest archiso check ${fgGreen}succesful${txReset}!"
+		echo "Latest archiso check ${fgGreen}successful${txReset}!"
 		sudo rm stfu.txt
 	else
 		sudo rm stfu.txt

@@ -17,13 +17,12 @@ echo
 	outDir=$HOME"/${profile}-Out"
 	user=$(whoami)
 
-	isArchisoUpToDate
-	searchForSourceGit $profile
-
 echo
 echo "${fgCyan}Step 2${txReset}: Making sure you have latest ${fgCyan}archiso${txReset}!"
 echo
 
+	isArchisoUpToDate
+	searchForSourceGit $profile
 	checkInternetConnection
 	deleteBuildDir $buildDir
 

@@ -11,6 +11,7 @@ echo
 	outDir=~/Arch-Vanilla-Baseline-Out
 	buildDir=Build
 
+echo "${app_name} will now check if you have the latest archiso so that we only build the ${fgCyan}newest${txReset} ISO possible."
 cd
 isArchisoUpToDate
 
@@ -39,9 +40,6 @@ fi
 
 cd ~/Arch-Vanilla-Baseline
 deleteBuildDir $buildDir
-
-echo "${app_name} will now check if you have the latest archiso so that we only build the ${fgCyan}newest${txReset} ISO possible."
-
 checkInternetConnection
 
 echo "${app_name} will now copy over the Latest Monthly ${fgCyan}Baseline${txReset} Arch Profile into this directory."
