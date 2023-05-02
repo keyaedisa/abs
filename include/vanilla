@@ -1,6 +1,8 @@
 #!/bin/bash
 # https://keyaedisa.github.io/ !!
 
+checkSudo
+
 echo "Oki! Preparing to build a Vanilla Arch ISO using latest monthly ${fgCyan}Releng${txReset} profile!"
 echo
 
