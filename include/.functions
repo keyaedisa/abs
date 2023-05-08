@@ -71,7 +71,7 @@ fi
 
 _version() {
 if [[ $app_name = "abs" ]]; then
-buildVersion=3.6-2
+buildVersion=3.6-3
 
 	echo "${txBold}${fgBlue}Version${txReset}:"
 	echo "    ${txBold}${fgMagenta}${app_name}${txReset} v${fgCyan}${buildVersion}${txReset}!"
